@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1483773866;adminuser|a:5:{s:2:"id";s:1:"1";s:4:"name";s:5:"Admin";s:5:"email";s:17:"admin@example.com";s:6:"status";s:1:"1";s:8:"username";s:5:"admin";}saveadmincat_msg|s:40:"Subcategory has been saved successfully.";__ci_vars|a:2:{s:16:"saveadmincat_msg";s:3:"old";s:18:"saveadmincat_class";s:3:"old";}saveadmincat_class|s:13:"alert-success";

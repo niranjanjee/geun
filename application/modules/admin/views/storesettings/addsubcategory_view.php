@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 ?>
 <section class="content">
 	<div class="row">
@@ -18,8 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                        <div class="form-group">
 				          <select id="name" name="category" class="form-control" >
                              <option value="0">Select Category</option>
-                              <?php foreach($category as $v){?>
-                                <option value="<?php echo $v['id'];?>"><?php echo $v['name'];?></option>
+                              <?php foreach($category as $v)
+							  {?>
+                                <option value="<?php echo $v['id'];?>"
+                                 <?php if(isset($subcategory->category_id) && $subcategory->category_id ==$v['id']) echo "selected"; ?> ><?php echo $v['name'];?></option>
                                         <?php }?>
                           </select>
 						</div>
@@ -32,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  <input type="text" placeholder="Subcategory Name" id="name" name="name" class="form-control" value="<?php echo (isset($subcategory->name))?$subcategory->name:(isset($name)?$name:'');?>">
 						  <?php echo form_error('name'); ?>
 						  <?php $subcatid = (isset($subcategory->id))?$subcategory->id:(isset($subcatid)?$subcatid:'');?>
-						  <input type="hidden" id="subcatid" name="subcatid" value="<?php echo $subcatid;?>">
+					  <input type="hidden" id="sid" name="scatid" value="<?php if(isset($subcategory->id)) echo $subcategory->id;?>">
 						</div>
 						
 						<div class="form-group">

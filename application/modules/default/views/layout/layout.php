@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/front/css/owl.theme.css" type="text/css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/front/css/style.css" type="text/css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/front/css/style-me.css" type="text/css">
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/front/js/jquery.min.js"></script> 
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/front/js/jquery.min.js"></script>
 
 
 </head>

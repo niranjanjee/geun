@@ -166,7 +166,7 @@ class Storesettings extends CI_controller {
 	
 	public function deletesubcat($id)
 	{	
-		$id = (int) $id;
+		 $id = (int) $id; 
 		if($id <= 0)
 		{
 			show_error("bad Request", 400);
@@ -189,7 +189,7 @@ class Storesettings extends CI_controller {
 	{
 		$data = array();
 		if($this->input->post()){
-			$id = (int) $this->input->post('subcatid');
+			$id = (int) $this->input->post('scatid');
 			$this->form_validation->set_error_delimiters('<label class="error">', '</label>');	
 			$this->form_validation->set_rules('name', 'Name', 'trim|required|callback_is_unique_subcat|xss_clean');
 			$this->form_validation->set_rules('category', 'Category', 'required');
@@ -199,9 +199,14 @@ class Storesettings extends CI_controller {
 				$data['name'] = $this->input->post('name');
 				$data['category_id'] = $this->input->post('category');
 				$data['status'] = $this->input->post('status');	
+				
+			
+				
+				
 				if($id > 0)
 				{
 					$data['updated_at'] = $this->current_date_obj->format("Y-m-d H:i:s");
+					$subcatid = $this->storesettings_model->save_subcategory($data, $id);
 				}
 				else
 				{
@@ -224,12 +229,16 @@ class Storesettings extends CI_controller {
 				$data['subcatid'] = $id;	
 			}
 		}else{
-			if($id > 0){
-				$data['subcategory'] = $this->storesettings_model->get_subcategory($id);
-				$data['status'] = $data['subcategory']->status;
+			if($id > 0)
+			{
+				$this->data['subcategory'] = $this->storesettings_model->get_subcategory($id);
+				$this->data['status'] = $this->data['subcategory']->status;
 			}
 		}
 		$this->data['category'] = $this->storesettings_model->show_category();
+		
+	
+		
 		$this->template->content->view('storesettings/addsubcategory_view', $this->data);
         $this->template->publish();
 	}

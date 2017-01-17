@@ -111,11 +111,21 @@ class Storesettings_model extends CI_Model {
 		//echo $this->db->last_query();  die;
 		return $rows;
 	}
-	
+	public function get_subcategory($id)
+	{
+		$this->db->select("gs.*");	
+			$this->db->select("C.id as CID,C.name as name1");	
+		$this->db->from("ofo_sub_categories gs");
+	    $this->db->join('ofo_categories C', 'gs.category_id = C.id', 'left');
+		$this->db->where("gs.id", $id);	
+		$query = $this->db->get();
+		$row = $query->row();		
+		return $row;
+	}
 	public function delete_subcategory($id, $data)
 	{
 		$this->db->where("id", $id);
-		if($this->db->update("gem_gemstone_species", $data)){
+		if($this->db->update(" ofo_sub_categories", $data)){
 			return true;
 		}else{
 			return false;
@@ -123,7 +133,8 @@ class Storesettings_model extends CI_Model {
 	}
 	
 	public function save_subcategory($data, $id = 0){
-		if($id > 0){
+		if($id > 0)
+		{
 			$this->db->where("id", $id);
 			$this->db->update("ofo_sub_categories", $data);
 		}else{
@@ -133,16 +144,7 @@ class Storesettings_model extends CI_Model {
 		return $id;
 	}
 	
-	public function get_subcategory($id){
-		$this->db->select("gs.*");		
-		$this->db->from("gem_gemstone_species gs");
-		$this->db->where("gs.id", $id);	
-		$this->db->where("gs.status <>", "2");	
-		$this->db->order_by("gs.id", "DESC");
-		$query = $this->db->get();
-		$row = $query->row();		
-		return $row;
-	}
+	
 	
 	
 }

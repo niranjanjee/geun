@@ -69,8 +69,36 @@ class Search_model extends CI_Model {
 		//echo $this->db->last_query();
 		return $rows;
 	}
-	
-	public function get_gemstones($limit = 1, $limitstart = '-1', $filters = array())
+        
+        public function get_gemstones_bycid($cid)
+        {
+            $sql =  "SELECT p.id, p.title, p.store_id, p.gemstone_price, p.status, cat.name AS cat_name, pg.name as image";
+            $sql .= " FROM gem_products p
+					INNER JOIN gem_stores AS s ON s.id = p.store_id AND s.status = 1	
+					INNER JOIN ofo_categories AS cat ON cat.id = p.category_id AND cat.status = 1	
+					LEFT JOIN gem_product_gallery AS pg ON p.id = pg.product_id AND pg.is_primary = 1
+				WHERE p.status = 1 AND p.category_id='$cid'";
+            
+            //echo $sql; exit;
+            $query = $this->db->query($sql);
+		$rows = $query->result();	
+		//echo $this->db->last_query();
+		return $rows;
+        }   
+        
+        function category_by_subcatname($subcname)
+        {
+            $sql="SELECT category_id FROM ofo_sub_categories WHERE name='$subcname'";
+            return $query = $this->db->query($sql)->row()->category_id;
+        }
+        
+        function categoryname_by_id($cid)
+        {
+            $sql="SELECT name FROM ofo_categories WHERE id='$cid'";
+            return $query = $this->db->query($sql)->row()->name;
+        }
+
+        public function get_gemstones($limit = 1, $limitstart = '-1', $filters = array())
 	{
 		$sql = "";
 		if($limitstart >= 0){

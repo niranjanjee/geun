@@ -19,8 +19,22 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data = array();
-        $data["gems_categories"] = $this->search_model->show_category();
-		
+                $data["gems_categories"] = $this->search_model->show_category();
+                $data['getcatName']='';
+                $catArr=  $data["gems_categories"];
+                //$data['catJson']=  json_encode($catArr);
+                //echo "<pre>";print_r($catArr); exit;
+                $html="var countries={";
+                foreach($catArr as $k=>$v){ 
+                    $html .='"'.$v['id'].'"'.":".'"'.$v['name'].'",';
+                }   
+                $html=  trim($html,',');
+                $html .="}";
+
+                $file = fopen("assets/front/js/gemstone.js","w");
+                fwrite($file,$html);
+                fclose($file);
+	//echo "<pre>";print_r($data["json_cat"]); exit;	
 		
 		
 		$data['gemstones'] = $this->search_model->get_gemstones(15, 0);//fetch all data
@@ -30,8 +44,61 @@ class Home extends CI_Controller {
 		$this->template->content->view('home/home_view', $data);
         $this->template->publish();
 	}
-	
-	//Not in user this function
+        
+        function GetProductByAjaxCid()
+        {
+            $post = $this->input->post(NULL, TRUE);
+            //echo $post['cn'];
+            if ($post['cn'] != '') {
+                //$data['getcatName']=$this->search_model->categoryname_by_id($uri);
+                $itemName = $this->search_model->get_gemstones_bycid($post['cn']);
+                if(count($itemName)>0){
+                    echo json_encode(array("result"=>"S","data"=>$itemName));die;
+                }else{
+                    echo json_encode(array("result"=>"F"));die;
+                }
+            }
+        }
+        function GetProductByAjaxSubCid()
+        {
+            $post = $this->input->post(NULL, TRUE);
+            //echo $post['cn'];
+            if ($post['cn'] != '') {
+                //$data['getcatName']=$this->search_model->categoryname_by_id($uri);
+                $getcid=$this->search_model->category_by_subcatname($post['cn']);
+                $itemName = $this->search_model->get_gemstones_bycid($getcid);
+                if(count($itemName)>0){
+                    echo json_encode(array("result"=>"S","data"=>$itemName));die;
+                }else{
+                    echo json_encode(array("result"=>"F"));die;
+                }
+            }
+        }
+        
+        function getproductbyscid()
+        {
+            $uri=$this->uri->segment("2");
+            //echo $uri; exit;
+            $post = $this->input->post(NULL, TRUE);
+            $data = array();
+            $data["gems_categories"] = $this->search_model->show_category();
+            $getcid=$this->search_model->category_by_subcatname($uri);
+            
+            if ($getcid != '') {
+                $data['getcatName']=$this->search_model->categoryname_by_id($getcid);
+                $itemName = $this->search_model->get_gemstones_bycid($getcid);
+                //echo "<pre>";print_r($itemName); exit;
+                $data['gemstones'] = $itemName;
+		//$data["pagination"] = $result['pagination'];
+		$data["store_img_upload_path"] = $this->config->item('store_img_upload_path');
+		$data["default_image"] = $this->config->item('default_image');
+		$this->template->content->view('home/home_view', $data);
+                $this->template->publish();
+            }
+        }
+
+
+        //Not in user this function
 	private function get_products()
 	{		
 		$return = array();
