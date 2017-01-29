@@ -708,7 +708,7 @@ class Myaccount extends CI_Controller {
 			$this->form_validation->set_error_delimiters('<label class="error">', '</label>');	
 			if($this->input->post('save_info')){
 				if($this->input->post('contact_no')){
-					$this->form_validation->set_rules('contact_no', 'Contact No', 'trim|min_length[10]|is_natural|xss_clean');
+					$this->form_validation->set_rules('contact_no', 'Contact No', 'required|regex_match[/^(\+\d{1,3}[- ]?)?\d{10}$/]'); 
 				}
 				if($this->input->post('skypeid')){
 					$this->form_validation->set_rules('skypeid', 'Skype ID', 'trim|max_length[100]|xss_clean');

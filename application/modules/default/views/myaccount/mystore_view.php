@@ -170,7 +170,7 @@ $(document).ready(function(){
 	$("#mystoreform #country").change(function(){
 		$.ajax({
 			method:'POST',
-			url:'/default/home/getstates',
+			url:'/default/Myaccount/getstates',
 			data:{"country":$(this).val(), "ajax":1, "<?php echo $this->security->get_csrf_token_name()?>":"<?php echo $this->security->get_csrf_hash()?>"},
 			dataType:'json',
 			beforeSend:function(){
