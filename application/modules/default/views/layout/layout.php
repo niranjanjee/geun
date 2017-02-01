@@ -48,14 +48,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Header Top Links -->
             <div class="toplinks">
               <div class="links">			  
-                <div class="myaccount"><a title="My Account" href="#"><span class="glyphicon glyphicon-check"></span> Checkout </a></div>
+               
 				<?php if(isset($this->session->user['id'])){?>	
-				<div class="myaccount"><a title="My Account" href="/default/myaccount/dashboard"><i class="fa fa-user"></i></span> My Account </a></div>
+				<div class="myaccount"><a title="My Account" href="/default/myaccount/dashboard"><i class="fa fa-user"></i></span> My Account </a></div>&nbsp;  &nbsp;&nbsp;  
 				<div class="wishlist"><a title="Logout" href="/default/login/logout"><span class="glyphicon glyphicon-lock"></span>  Logout  </a></div>
 				<?php }else{
 				?>
 				<div class="wishlist"><a title="Login" href="/login"><span class="glyphicon glyphicon-lock"></span>  Login  </a></div>
-                <div class="wishlist"><a title="Register" href="/register"> <span class="glyphicon glyphicon-edit"></span>  Register  </a></div>
+                &nbsp;  &nbsp;
+                <div class="wishlist"><a title="Register" href="/register"> <span class="glyphicon glyphicon-edit"> </span>  Register  </a></div>
 				<?php
 				}?>
                 
@@ -153,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                      </li>
 
-                    <li class="level0 nav-6 level-top first parent"> <a class="level-top" href="index.html"> <span>Home</span> </a>
+                    <li class="level0 nav-6 level-top first parent"> <a class="level-top" href="<?php echo base_url()?>"> <span>Home</span> </a>
                      
                     </li>
                  
@@ -210,7 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <a class="logo-small" title="Magento Commerce" href="index.html"><img alt="Magento Commerce" src="<?php echo base_url(); ?>/assets/front/images/gem-icon.png"></a>
         <ul id="nav" class="hidden-xs">
-          <li class="level0 parent drop-menu"><a href="index.html" class="active1"><span>Home</span> </a>
+          <li class="level0 parent drop-menu"><a href="<?php echo base_url()?>" class="active1"><span>Home</span> </a>
            
           </li>
           <li class="level0 parent drop-menu"><a href="#"><span>Gemstone</span> </a></li>
@@ -335,7 +336,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <footer class="footer">    
     <div class="footer-middle container">
       <div class="col-md-3 col-sm-4">
-        <div class="footer-logo"><a href="index.html" title="Logo"><img src="images/logo.png" alt="logo"></a></div>
+        <div class="footer-logo">
+        
+              <a  title="" href="/"><img alt="Magento Commerce" src="<?php echo base_url(); ?>/assets/front/images/logo.png"></a> 
+        
+        </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu. </p>
         <div class="payment-accept">
           <div>

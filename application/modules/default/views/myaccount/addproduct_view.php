@@ -45,6 +45,8 @@
 						<input type="hidden" id="pid" name="pid" class="form-control" value="<?php echo (isset($pid) && $pid != null)?$pid:0;?>">
                         <div class="form-group">
                           <label class="col-md-3 col-sm-3 control-label" for="">Title</label>
+                          
+                          
                           <div class="col-md-9 col-sm-9 user-info">
                              <input type="text" placeholder="" id="title" name="title" maxlength="200" class="form-control" value="<?php echo (isset($product->title) && $product->title != null)?$product->title:(isset($title)?$title:'');?>">
 							 <?php echo form_error('title'); ?>

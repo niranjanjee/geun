@@ -56,6 +56,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'default/login';
+$route['forget'] = 'default/forget';
+
+$route['login/password_reset'] = 'default/forget/password_reset';
+
+
 $route['register'] = 'default/login/register';
 $route['forgetpassword'] = 'default/login/forgetpassword';
 $route['gemstone/item/:num'] = 'default/gemstone/item/$1';

@@ -28,6 +28,7 @@
             <div class="form-group">             
              <button type="submit" class="btn btn-success login_input2">Submit</button>
            </div>
+            <a href="forget">I forgot my password</a><br>
                 </div>
                 <div class="col-sm-2"></div>
             </div>

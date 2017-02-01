@@ -168,9 +168,9 @@ class Myaccount extends CI_Controller {
 				$config['overwrite']          = true;
 				$config['upload_path']          = $upload_path;
                 $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 5120;
-                $config['max_width']            = 300;
-                $config['max_height']           = 300;
+                $config['max_size']             = 15120;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1300;
 				$config['file_name']           = $file_name;
 				$this->load->library('upload', $config);
 				$this->upload->initialize($config);

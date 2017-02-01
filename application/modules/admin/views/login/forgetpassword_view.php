@@ -1,18 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
    <div class="login-box">
   <div class="login-logo">
     <b>Admin</b>&nbsp;Management
   </div>
-  <!-- /.login-logo -->
+ <?php
+	if(isset($loginmsg)){
+	echo '<div class="alert alert-danger">
+		<i class="icon fa fa-ban"></i>
+		'.$loginmsg.'
+	</div>';
+	}
+	?>
+	
   <div class="login-box-body">
     <p class="login-box-msg">Enter your email to get password</p>
-
-    <form method="post" action="../../index2.html">
+	    <?php
+					$attributes = array('method' => 'post', 'name' => 'forgetpassword', 'id' => 'forgetpassword');
+					echo form_open('admin/forgetpassword', $attributes);
+					?>             
+                   
       <div class="form-group has-feedback">
-        <input type="email" placeholder="Email" class="form-control">
+        <input type="text" placeholder="Email" name="email" id="email" class="form-control">
+       <span style="color:red;"> <?php echo form_error('email'); ?></span>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="row">
@@ -22,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <!-- /.col -->
       </div>
-    </form>
+     <?php echo form_close();?>
 	<p>&nbsp;</p>
     <a href="#">Back to login</a><br>
   </div>

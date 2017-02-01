@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     <?php echo form_close();?>
 	<p>&nbsp;</p>
-    <a href="#">I forgot my password</a><br>
+    <a href="admin/forgetpassword/">I forgot my password</a><br>
   </div>
   <!-- /.login-box-body -->
 </div>

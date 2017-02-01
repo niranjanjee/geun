@@ -49,7 +49,8 @@ class Storesettings extends CI_controller {
 	public function addcategory($id = 0)
 	{
 		$data = array();
-		if($this->input->post()){
+		if($this->input->post())
+		{
 			$id = (int) $this->input->post('catid');
 			$this->form_validation->set_error_delimiters('<label class="error">', '</label>');	
 			$this->form_validation->set_rules('name', 'Name', 'trim|required|callback_is_unique_cat|xss_clean');
@@ -430,9 +431,10 @@ class Storesettings extends CI_controller {
 	
 	public function addcutting($id = 0)
 	{
+	  
 		$data = array();
 		if($this->input->post()){
-			$id = (int) $this->input->post('cuttingid');
+			 $id = (int) $this->input->post('cuttingid'); 
 			$this->form_validation->set_error_delimiters('<label class="error">', '</label>');	
 			$this->form_validation->set_rules('name', 'Name', 'trim|required|callback_is_unique_cutting|xss_clean');
 			$this->form_validation->set_rules('status', 'Status', 'trim|required|xss_clean');

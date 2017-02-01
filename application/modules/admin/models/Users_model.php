@@ -49,7 +49,8 @@ class Users_model extends CI_Model {
 	public function update_user_status($id, $data)
 	{
 		$this->db->where("id", $id);
-		if($this->db->update("ofo_users", $data)){
+		if($this->db->update("ofo_users", $data))
+		{
 			return true;
 		}else{
 			return false;

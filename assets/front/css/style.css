@@ -3306,6 +3306,7 @@ small {
 	font-weight: bold;
 	background: #8cb547;
 	text-transform: uppercase;
+	margin-top:-10px;
 }
 .side-nav-categories .block-title:before {
 	content: '\f0c9';
@@ -4710,7 +4711,8 @@ button.button span {
 .category-title {
 	padding: 0px 0px 10px 0px;
 	margin: 0 0 0px 0px;
-	overflow: hidden
+	overflow: hidden;
+	margin-top: -14px;
 }
 .category-title h1 {
 	color: #000;

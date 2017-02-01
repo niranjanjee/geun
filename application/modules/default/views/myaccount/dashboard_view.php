@@ -16,7 +16,7 @@ $sid = "";
           <div class="row">
             <div class="col-xs-12">
               <div class="inner-wrapper clearfix">
-                <h3>Wellcome <span><?php echo ucwords($this->session->user['name']);?></span></h3>
+                <h3>Welcome <span><?php echo ucwords($this->session->user['name']);?></span></h3>
                 <p>&nbsp;</p>
                 <ul class="list-inline text-center">
                   <li><a class="btn btn-default btn-lg" href="/default/myaccount/myprofile"><i aria-hidden="true" class="fa fa-user"></i>My Profile</a></li>

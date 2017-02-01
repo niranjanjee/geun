@@ -80,11 +80,11 @@
                     </div>
                     <!--box-content box-category--> 
                 </div>
-                <div class="block block-banner"><a href="#"><img src="<?php echo base_url(); ?>/assets/front/img/block-banner.png" alt="block-banner"></a></div>
+            
             </aside>
             <section class="col-main col-sm-9 ">
                 <div class="category-title">
-                    <h1><?php if($getcatName==''){?>VARIUS GEMSTONE<?php }else{echo $getcatName;} ?></h1>
+                    <h1><?php if($getcatName==''){?><?php }else{echo $getcatName;} ?></h1>
                 </div>          
                 <div class="category-products"> 
                     <ul class="products-grid product">
